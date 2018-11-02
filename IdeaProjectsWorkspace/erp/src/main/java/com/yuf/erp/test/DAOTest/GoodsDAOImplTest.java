@@ -1,4 +1,4 @@
-package com.yuf.erp.test;
+package com.yuf.erp.test.DAOTest;
 
 import com.yuf.erp.DAO.IGoodsDAO;
 import com.yuf.erp.DAO.impl.GoodsDAOImpl;

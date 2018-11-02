@@ -1,4 +1,4 @@
-package com.yuf.erp.test;
+package com.yuf.erp.test.DAOTest;
 
 import com.yuf.erp.DAO.ICategoryDAO;
 import com.yuf.erp.DAO.impl.CategoryDAOImpl;
@@ -14,14 +14,14 @@ public class CategoryDAOImplTest {
 
     @Test
     public void save() {
-        Category category = new Category(2, "ipad");
+        Category category = new Category(4, "ipsaud");
         ICategoryDAO iCategoryDAO = new CategoryDAOImpl();
         iCategoryDAO.save(category);
     }
 
     @Test
     public void update() {
-        Category category = new Category(2, "ipadd");
+        Category category = new Category(2, "ipaddmm");
         ICategoryDAO iCategoryDAO = new CategoryDAOImpl();
         iCategoryDAO.update(2,category);
     }

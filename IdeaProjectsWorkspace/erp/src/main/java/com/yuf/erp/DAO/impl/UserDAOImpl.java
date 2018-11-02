@@ -1,7 +1,7 @@
 package com.yuf.erp.DAO.impl;
 
-import com.yuf.erp.DAO.ICategoryDAO;
-import com.yuf.erp.domain.Category;
+import com.yuf.erp.DAO.IUserDAO;
+import com.yuf.erp.domain.User;
 import com.yuf.erp.utils.JdbcUtils;
 
 import java.sql.Connection;
@@ -11,18 +11,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryDAOImpl implements ICategoryDAO {
+public class UserDAOImpl implements IUserDAO {
     Connection conn = null;
     Statement st = null;
     ResultSet rs = null;
     @Override
-    public void save(Category category) {
+    public void save(User user) {
         try {
             this.conn = JdbcUtils.getConn();
             this.st = this.conn.createStatement();
-            String sql = "INSERT INTO category(categoryNo,category) " +
-                    "VALUES ("+ category.getCategoryNo()+"," +
-                    "'"+ category.getCategory()+"')";
+            String sql = "INSERT INTO user(userId,userName,userPwd,userEmail) " +
+                    "VALUES ("+ user.getUserId()+"," +
+                    "'"+ user.getUserName()+"'," +
+                    "'"+ user.getUserPwd()+"'," +
+                    "'"+user.getUserEmail()+"')";
             System.out.println(sql);
             this.st.executeUpdate(sql);
         }catch (Exception e){
@@ -30,21 +32,23 @@ public class CategoryDAOImpl implements ICategoryDAO {
         }finally {
             try {
                 JdbcUtils.close(this.conn,this.st,this.rs);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
+
     @Override
-    public void update(int categoryNo, Category category) {
+    public void update(int userId, User user) {
         try {
             this.conn = JdbcUtils.getConn();
             this.st = this.conn.createStatement();
-            String sql = "UPDATE category SET " +
-                    "categoryNo = "+category.getCategoryNo()+" ," +
-                    "category = '"+category.getCategory()+"'" +
-                    "WHERE categoryNo = "+categoryNo;
+            String sql = "UPDATE user SET " +
+                    "userId = "+user.getUserId()+" ," +
+                    "userName = '"+user.getUserName()+"' ," +
+                    "userPwd = '"+user.getUserPwd()+"'," +
+                    "userEmail = '"+user.getUserEmail()+"' " ;
             System.out.println(sql);
             this.st.executeUpdate(sql);
         }catch (Exception e){
@@ -52,18 +56,18 @@ public class CategoryDAOImpl implements ICategoryDAO {
         }finally {
             try {
                 JdbcUtils.close(this.conn,this.st,this.rs);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
     @Override
-    public void delete(int categoryNo) {
+    public void delete(int userId) {
         try {
             this.conn = JdbcUtils.getConn();
             this.st = this.conn.createStatement();
-            String sql = "DELETE FROM category WHERE categoryNo = "+categoryNo+"";
+            String sql = "DELETE FROM user WHERE userId = "+userId+"";
             System.out.println(sql);
             this.st.executeUpdate(sql);
         }catch (Exception e){
@@ -71,32 +75,34 @@ public class CategoryDAOImpl implements ICategoryDAO {
         }finally {
             try {
                 JdbcUtils.close(this.conn,this.st,this.rs);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
     @Override
-    public Category get(int categoryNo) {
-        Category category = new Category();
+    public User get(int userId) {
+        User user = new User();
         try {
             this.conn = JdbcUtils.getConn();
             this.st = this.conn.createStatement();
-            String sql = "SELECT * FROM category WHERE categoryNo = "+categoryNo+"";
+            String sql = "SELECT * FROM user WHERE userId = "+userId+"";
             System.out.println(sql);
             this.rs = this.st.executeQuery(sql);
             if (this.rs.next()){
-                category.setCategoryNo(this.rs.getInt("categoryNo"));
-                category.setCategory(this.rs.getString("category"));
-                return category;
+                user.setUserId(this.rs.getInt("userId"));
+                user.setUserName(this.rs.getString("userName"));
+                user.setUserPwd(this.rs.getString("userPwd"));
+                user.setUserEmail(this.rs.getString("userEmail"));
+                return user;
             }
         }catch (Exception e){
             e.printStackTrace();
         }finally {
             try {
                 JdbcUtils.close(this.conn,this.st,this.rs);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -104,27 +110,29 @@ public class CategoryDAOImpl implements ICategoryDAO {
     }
 
     @Override
-    public List<Category> getAll() {
-         try {
+    public List<User> getAll() {
+        try {
             this.conn = JdbcUtils.getConn();
             this.st = this.conn.createStatement();
-            String sql = "SELECT * FROM category";
+            String sql = "SELECT * FROM user";
             System.out.println(sql);
             this.rs = this.st.executeQuery(sql);
-            List<Category> categoriesList = new ArrayList<>();
+            List<User> usersList = new ArrayList<>();
             while (this.rs.next()){
-                Category category = new Category();
-                category.setCategoryNo(this.rs.getInt("categoryNo"));
-                category.setCategory(this.rs.getString("category"));
-                categoriesList.add(category);
+                User user = new User();
+                user.setUserId(this.rs.getInt("userId"));
+                user.setUserName(this.rs.getString("userName"));
+                user.setUserPwd(this.rs.getString("userPwd"));
+                user.setUserEmail(this.rs.getString("userEmail"));
+                usersList.add(user);
             }
-            return categoriesList;
+            return usersList;
         }catch (Exception e){
             e.printStackTrace();
         }finally {
             try {
                 JdbcUtils.close(this.conn,this.st,this.rs);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

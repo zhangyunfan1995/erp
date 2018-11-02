@@ -14,7 +14,7 @@ public interface IUserDAO {
     //    1.增加一条新数据
     void save(User user);
     //    2.修改指定数据
-    void update(int userId,User user);
+    void update(int userId, User user);
     //    3.删除一条新数据
     void delete(int userId);
     //    4.查询指定数据

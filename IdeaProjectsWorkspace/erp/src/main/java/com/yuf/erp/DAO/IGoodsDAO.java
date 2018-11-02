@@ -14,7 +14,7 @@ public interface IGoodsDAO {
 //    1.增加一条新数据
     void save(Goods goods);
 //    2.修改指定数据
-    void update(int goodsNo,Goods goods);
+    void update(int goodsNo, Goods goods);
 //    3.删除一条新数据
     void delete(int goodsNo);
 //    4.查询指定数据
