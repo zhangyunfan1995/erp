@@ -47,7 +47,8 @@ public class JdbcUtils {
     public static Connection getConn() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/demo";
         String user = "root";
-        String password = "root";
+//        String password = "root";
+        String password = "zhangyunfan371!";
         String driverName = "com.mysql.jdbc.Driver";
 
 //        配置连接池
@@ -60,10 +61,17 @@ public class JdbcUtils {
         Connection conn = ds.getConnection();
         return conn;
     }
-    public static void close(Connection conn, Statement st, ResultSet rs) {
+    public static void close(Connection conn, PreparedStatement ps,Statement st, ResultSet rs) {
         if (conn != null) {
             try {
                 conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (ps != null) {
+            try {
+                ps.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

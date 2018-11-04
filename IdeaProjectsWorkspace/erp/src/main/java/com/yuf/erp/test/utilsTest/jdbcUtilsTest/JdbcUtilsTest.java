@@ -1,4 +1,4 @@
-package com.yuf.erp.test.jdbcUtilsTest;
+package com.yuf.erp.test.utilsTest.jdbcUtilsTest;
 
 import com.yuf.erp.utils.JdbcUtils;
 import org.junit.Test;

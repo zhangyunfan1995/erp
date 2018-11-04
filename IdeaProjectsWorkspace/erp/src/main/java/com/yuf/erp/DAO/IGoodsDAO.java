@@ -3,12 +3,14 @@ package com.yuf.erp.DAO;
 import com.yuf.erp.domain.Goods;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 
 public interface IGoodsDAO {
     Connection conn = null;
+    PreparedStatement ps = null;
     Statement st = null;
     ResultSet rs = null;
 //    1.增加一条新数据

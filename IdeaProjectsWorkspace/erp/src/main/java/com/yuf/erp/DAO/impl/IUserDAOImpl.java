@@ -4,17 +4,15 @@ import com.yuf.erp.DAO.IUserDAO;
 import com.yuf.erp.domain.User;
 import com.yuf.erp.utils.JdbcUtils;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAOImpl implements IUserDAO {
-    Connection conn = null;
-    Statement st = null;
-    ResultSet rs = null;
+public class IUserDAOImpl implements IUserDAO {
+    private Connection conn = null;
+    private PreparedStatement ps = null;
+    private Statement st = null;
+    private ResultSet rs = null;
     @Override
     public void save(User user) {
         try {
@@ -31,7 +29,7 @@ public class UserDAOImpl implements IUserDAO {
             e.printStackTrace();
         }finally {
             try {
-                JdbcUtils.close(this.conn,this.st,this.rs);
+                JdbcUtils.close(this.conn,this.ps,this.st,this.rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -55,7 +53,7 @@ public class UserDAOImpl implements IUserDAO {
             e.printStackTrace();
         }finally {
             try {
-                JdbcUtils.close(this.conn,this.st,this.rs);
+                JdbcUtils.close(this.conn,this.ps,this.st,this.rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -74,7 +72,7 @@ public class UserDAOImpl implements IUserDAO {
             e.printStackTrace();
         }finally {
             try {
-                JdbcUtils.close(this.conn,this.st,this.rs);
+                JdbcUtils.close(this.conn,this.ps,this.st,this.rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -101,7 +99,7 @@ public class UserDAOImpl implements IUserDAO {
             e.printStackTrace();
         }finally {
             try {
-                JdbcUtils.close(this.conn,this.st,this.rs);
+                JdbcUtils.close(this.conn,this.ps,this.st,this.rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -131,7 +129,7 @@ public class UserDAOImpl implements IUserDAO {
             e.printStackTrace();
         }finally {
             try {
-                JdbcUtils.close(this.conn,this.st,this.rs);
+                JdbcUtils.close(this.conn,this.ps,this.st,this.rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }

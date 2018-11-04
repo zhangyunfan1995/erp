@@ -4,15 +4,13 @@ import com.yuf.erp.DAO.IGoodsDAO;
 import com.yuf.erp.domain.Goods;
 import com.yuf.erp.utils.JdbcUtils;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoodsDAOImpl implements IGoodsDAO {
+public class IGoodsDAOImpl implements IGoodsDAO {
     private Connection conn = null;
+    private  PreparedStatement ps = null;
     private Statement st = null;
     private ResultSet rs = null;
     @Override
@@ -33,7 +31,7 @@ public class GoodsDAOImpl implements IGoodsDAO {
             e.printStackTrace();
         }finally {
             try {
-                JdbcUtils.close(this.conn,this.st,this.rs);
+                JdbcUtils.close(this.conn,this.ps,this.st,this.rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -58,7 +56,7 @@ public class GoodsDAOImpl implements IGoodsDAO {
             e.printStackTrace();
         }finally {
             try {
-                JdbcUtils.close(this.conn,this.st,this.rs);
+                JdbcUtils.close(this.conn,this.ps,this.st,this.rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -77,7 +75,7 @@ public class GoodsDAOImpl implements IGoodsDAO {
             e.printStackTrace();
         }finally {
             try {
-                JdbcUtils.close(this.conn,this.st,this.rs);
+                JdbcUtils.close(this.conn,this.ps,this.st,this.rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -105,7 +103,7 @@ public class GoodsDAOImpl implements IGoodsDAO {
             e.printStackTrace();
         }finally {
             try {
-                JdbcUtils.close(this.conn,this.st,this.rs);
+                JdbcUtils.close(this.conn,this.ps,this.st,this.rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -136,7 +134,7 @@ public class GoodsDAOImpl implements IGoodsDAO {
             e.printStackTrace();
         }finally {
             try {
-                JdbcUtils.close(this.conn,this.st,this.rs);
+                JdbcUtils.close(this.conn,this.ps,this.st,this.rs);
             } catch (Exception e) {
                 e.printStackTrace();
             }
