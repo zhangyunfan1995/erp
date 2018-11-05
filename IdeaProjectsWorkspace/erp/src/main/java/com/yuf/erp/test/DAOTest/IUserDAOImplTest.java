@@ -1,7 +1,7 @@
 package com.yuf.erp.test.DAOTest;
 
-import com.yuf.erp.DAO.IUserDAO;
-import com.yuf.erp.DAO.impl.IUserDAOImpl;
+import com.yuf.erp.DAO.user.IUserDAO;
+import com.yuf.erp.DAO.user.IUserDAOImpl;
 import com.yuf.erp.domain.User;
 import org.junit.Test;
 
@@ -11,7 +11,7 @@ public class IUserDAOImplTest {
 
     @Test
     public void save() {
-        User user = new User(3,"root","root","1");
+        User user = new User(4,"root","root","1");
         IUserDAO iUserDAO = new IUserDAOImpl();
         iUserDAO.save(user);
     }
@@ -29,7 +29,7 @@ public class IUserDAOImplTest {
     @Test
     public void delete() {
         IUserDAO iUserDAO = new IUserDAOImpl();
-        iUserDAO.delete(1);
+        iUserDAO.delete(3);
     }
 
     @Test

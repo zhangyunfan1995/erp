@@ -1,4 +1,4 @@
-package com.yuf.erp.DAO;
+package com.yuf.erp.DAO.goods;
 
 import com.yuf.erp.domain.Goods;
 

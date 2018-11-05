@@ -1,7 +1,7 @@
 package com.yuf.erp.test.DAOTest;
 
-import com.yuf.erp.DAO.IGoodsDAO;
-import com.yuf.erp.DAO.impl.IGoodsDAOImpl;
+import com.yuf.erp.DAO.goods.IGoodsDAO;
+import com.yuf.erp.DAO.goods.IGoodsDAOImpl;
 import com.yuf.erp.domain.Goods;
 import org.junit.Test;
 
@@ -11,7 +11,7 @@ public class IGoodsDAOImplTest {
 
     @Test
     public void save() {
-        Goods goods = new Goods(4,
+        Goods goods = new Goods(5,
                 "ipad",
                 1000.00,
                 "from QIXIN",
@@ -22,13 +22,13 @@ public class IGoodsDAOImplTest {
 
     @Test
     public void update() {
-        Goods goods = new Goods(4,
+        Goods goods = new Goods(3,
                 "ipadd",
                 10004.00,
                 "from QQIXIN",
                 1);
         IGoodsDAO iGoodsDAO = new IGoodsDAOImpl();
-        iGoodsDAO.update(4,goods);
+        iGoodsDAO.update(3,goods);
     }
 
     @Test
@@ -40,8 +40,8 @@ public class IGoodsDAOImplTest {
     @Test
     public void get() {
         IGoodsDAO iGoodsDAO = new IGoodsDAOImpl();
-        Goods goods = iGoodsDAO.get(4);
-        System.out.println(goods.toString());
+        Goods goods = iGoodsDAO.get(5);
+            System.out.println(goods.toString());
     }
 
     @Test

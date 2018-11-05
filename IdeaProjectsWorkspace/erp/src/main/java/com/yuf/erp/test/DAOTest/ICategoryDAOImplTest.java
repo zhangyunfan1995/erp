@@ -1,7 +1,7 @@
 package com.yuf.erp.test.DAOTest;
 
-import com.yuf.erp.DAO.ICategoryDAO;
-import com.yuf.erp.DAO.impl.ICategoryDAOImpl;
+import com.yuf.erp.DAO.category.ICategoryDAO;
+import com.yuf.erp.DAO.category.ICategoryDAOImpl;
 import com.yuf.erp.domain.Category;
 import org.junit.Test;
 
@@ -32,7 +32,7 @@ public class ICategoryDAOImplTest {
     @Test
     public void get() {
         ICategoryDAO iCategoryDAO = new ICategoryDAOImpl();
-        Category category = iCategoryDAO.get(1);
+        Category category = iCategoryDAO.get(3);
         System.out.println(category.toString());
     }
 
