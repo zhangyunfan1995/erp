@@ -4,10 +4,8 @@ import com.yuf.erp.DAO.ICRUDTemplate;
 import com.yuf.erp.DAO.IResultSetHandler;
 import com.yuf.erp.domain.User;
 import com.yuf.erp.DAO.ICRUDTemplateImpl;
-import com.yuf.erp.utils.JdbcUtils;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class IUserDAOImpl implements IUserDAO {
@@ -52,7 +50,7 @@ public class IUserDAOImpl implements IUserDAO {
     public User get(int userId) {
         String sql = "SELECT * FROM user WHERE userId = ?";
         ICRUDTemplate icrudTemplate = new ICRUDTemplateImpl();
-        IResultSetHandler iResultSetHandler = new IResultSetHandlerImpl();
+        IResultSetHandler<List<User>> iResultSetHandler = new IUserResultSetHandlerImpl();
         List userslist = icrudTemplate.executeQuery(sql, iResultSetHandler, userId);
         if (userslist.size() == 1){
             return (User) userslist.get(0);
@@ -66,7 +64,7 @@ public class IUserDAOImpl implements IUserDAO {
     public List<User> getAll() {
         String sql = "SELECT * FROM user";
         ICRUDTemplate icrudTemplate = new ICRUDTemplateImpl();
-        IResultSetHandler iResultSetHandler = new IResultSetHandlerImpl();
+        IResultSetHandler<List<User>> iResultSetHandler = new IUserResultSetHandlerImpl();
         List userslist = icrudTemplate.executeQuery(sql, iResultSetHandler);
         if (userslist.size() != 0) {
             return userslist;

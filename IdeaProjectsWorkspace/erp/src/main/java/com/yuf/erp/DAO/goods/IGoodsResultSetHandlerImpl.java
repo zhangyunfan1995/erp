@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IResultSetHandlerImpl implements IResultSetHandler {
+public class IGoodsResultSetHandlerImpl implements IResultSetHandler<List<Goods>> {
     @Override
-    public List Handler(ResultSet rs) {
+    public List<Goods> Handler(ResultSet rs) {
         Goods goods = new Goods();
-        List goodsList = new ArrayList();
+        List<Goods> goodsList = new ArrayList();
         try {
             while (rs.next()) {
                 goods.setGoodsNo(rs.getInt("goodsNo"));

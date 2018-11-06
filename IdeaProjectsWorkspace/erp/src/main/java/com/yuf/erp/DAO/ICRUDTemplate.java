@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ICRUDTemplate {
     int executeUpdate(String sql,Object... params);
-     List executeQuery(String sql, IResultSetHandler iResultSetHandler, Object... params);
+     <T>T executeQuery(String sql, IResultSetHandler<T> iResultSetHandler, Object... params);
 }

@@ -31,7 +31,7 @@ public class ICRUDTemplateImpl implements ICRUDTemplate {
     }
 
     @Override
-    public List executeQuery(String sql,IResultSetHandler iResultSetHandler, Object... params) {
+    public <T>T executeQuery(String sql,IResultSetHandler<T> iResultSetHandler, Object... params) {
         try {
             conn = JdbcUtils.getConn();
             ps = conn.prepareStatement(sql);
@@ -39,8 +39,8 @@ public class ICRUDTemplateImpl implements ICRUDTemplate {
                 ps.setObject(i+1,params[i]);
             }
             rs = ps.executeQuery();
-            List handler = iResultSetHandler.Handler(rs);
-            return handler;
+
+            return iResultSetHandler.Handler(rs);
 
 
         } catch (SQLException e) {

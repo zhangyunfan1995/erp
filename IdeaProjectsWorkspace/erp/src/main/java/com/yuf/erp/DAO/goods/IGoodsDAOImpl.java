@@ -3,10 +3,8 @@ package com.yuf.erp.DAO.goods;
 import com.yuf.erp.domain.Goods;
 import com.yuf.erp.DAO.IResultSetHandler;
 import com.yuf.erp.DAO.ICRUDTemplateImpl;
-import com.yuf.erp.utils.JdbcUtils;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class IGoodsDAOImpl implements IGoodsDAO {
@@ -52,7 +50,7 @@ public class IGoodsDAOImpl implements IGoodsDAO {
     public Goods get(int goodsNo) {
 
         String sql = "SELECT * FROM goods WHERE goodsNo = ?";
-        IResultSetHandler iResultSetHandler = new IResultSetHandlerImpl();
+        IResultSetHandler<List<Goods>> iResultSetHandler = new IGoodsResultSetHandlerImpl();
         List goodslist = new ICRUDTemplateImpl().executeQuery(sql, iResultSetHandler, goodsNo);
         if (goodslist.size() ==1){
             return (Goods)goodslist.get(0);
@@ -65,7 +63,7 @@ public class IGoodsDAOImpl implements IGoodsDAO {
     public List<Goods> getAll() {
 
         String sql = "SELECT * FROM goods";
-        IResultSetHandler iResultSetHandler = new IResultSetHandlerImpl();
+        IResultSetHandler<List<Goods>> iResultSetHandler = new IGoodsResultSetHandlerImpl();
         List goodsList = new ICRUDTemplateImpl().executeQuery(sql, iResultSetHandler);
         return goodsList;
     }

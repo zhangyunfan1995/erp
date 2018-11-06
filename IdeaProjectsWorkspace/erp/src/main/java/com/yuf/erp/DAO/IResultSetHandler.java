@@ -7,6 +7,6 @@ import com.yuf.erp.domain.User;
 import java.sql.ResultSet;
 import java.util.List;
 
-public interface IResultSetHandler {
-     List Handler(ResultSet rs);
+public interface IResultSetHandler<T> {
+     T Handler(ResultSet rs);
 }

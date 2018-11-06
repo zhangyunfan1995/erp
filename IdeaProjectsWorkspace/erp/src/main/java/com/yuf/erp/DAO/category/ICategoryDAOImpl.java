@@ -39,10 +39,10 @@ public class ICategoryDAOImpl implements ICategoryDAO {
     @Override
     public Category get(int categoryNo) {
         String sql = "SELECT * FROM category WHERE categoryNo = ?";
-        IResultSetHandler iResultSetHandler = new IResultSetHandlerImpl();
-        List categoriesList = new ICRUDTemplateImpl().executeQuery(sql,iResultSetHandler, categoryNo);
+        IResultSetHandler<List<Category>> iResultSetHandler = new ICategoryResultSetHandlerImpl();
+        List<Category> categoriesList = new ICRUDTemplateImpl().executeQuery(sql,iResultSetHandler, categoryNo);
         if(categoriesList.size()==1){
-            return (Category)categoriesList.get(0);
+            return categoriesList.get(0);
         }else{
             return null;
         }
@@ -51,8 +51,8 @@ public class ICategoryDAOImpl implements ICategoryDAO {
     @Override
     public List<Category> getAll() {
         String sql = "SELECT * FROM category ";
-        IResultSetHandler iResultSetHandler = new IResultSetHandlerImpl();
-        List categoriesList = new ICRUDTemplateImpl().executeQuery(sql,iResultSetHandler);
+        IResultSetHandler<List<Category>> iResultSetHandler = new ICategoryResultSetHandlerImpl();
+        List<Category> categoriesList = new ICRUDTemplateImpl().executeQuery(sql,iResultSetHandler);
         if(categoriesList != null) {
             return categoriesList;
         }else {
